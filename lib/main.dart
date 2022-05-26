@@ -12,9 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      // theme: ThemeData(
+      //   primarySwatch: Colors.blue,
+      // ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
 
       initialRoute: '/',
@@ -54,8 +54,10 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: () {
             Navigator.pushNamed(context, '/movielist');
           },
-          child: Text(
-            'button',
+          child: Center(
+            child: Text(
+              'button',
+            ),
           ),
         ),
       ]),
