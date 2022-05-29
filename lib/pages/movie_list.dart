@@ -19,12 +19,10 @@ class _MovieListState extends State<MovieList> {
         await get(Uri.parse("https://yts.mx/api/v2/list_movies.json"));
     if (response.statusCode == 200) {
       var parsingData = jsonDecode(response.body);
-      print(parsingData['data']['movies'][0]['title']);
+      // (parsingData['data']['movies'][0]['title']);
       setState(() {
         movies = parsingData['data']['movies'];
       });
-      print(movies[0]['title']);
-      print(movies.length);
     } else {
       throw Exception('API 불러오기 실패');
     }
@@ -40,6 +38,9 @@ class _MovieListState extends State<MovieList> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
+    // final List filteresMovies =
+    //     movies.where((movie) => movie['id'] == 42414).toList();
 
     return Scaffold(
       appBar: AppBar(
@@ -59,13 +60,15 @@ class _MovieListState extends State<MovieList> {
         children: [
           Container(
             height: height / 4,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: movies.length,
-              itemBuilder: (BuildContext context, int index) {
-                return MovieFilter(index: index, movies: movies);
-              },
-            ),
+            child: FilteredMovieList(movies: movies, genre: 'total'),
+          ),
+          Container(
+            height: height / 4,
+            child: FilteredMovieList(movies: movies, genre: 'Action'),
+          ),
+          Container(
+            height: height / 4,
+            child: FilteredMovieList(movies: movies, genre: 'Drama'),
           ),
         ],
       ),
