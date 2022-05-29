@@ -11,16 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      // theme: ThemeData(
-      //   primarySwatch: Colors.blue,
-      // ),
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-
       initialRoute: '/',
       routes: {
         '/': (context) => MyHomePage(
-              title: '타이틀!',
+              title: 'Soongflix',
             ),
         '/movielist': (context) => MovieList(),
       },
@@ -48,7 +44,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     String title = widget.title;
     return Scaffold(
-      appBar: AppBar(title: Text('${title}')),
+      appBar: AppBar(
+        title: Text(
+          'SoongCha',
+          style:
+              TextStyle(color: Color(0xfff82f62), fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
       body: Column(children: [
         TextButton(
           onPressed: () {
@@ -56,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           child: Center(
             child: Text(
-              'button',
+              'START',
             ),
           ),
         ),

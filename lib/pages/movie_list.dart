@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart';
+import 'package:mobile_final/widget/movie_filter.dart';
 
 class MovieList extends StatefulWidget {
   const MovieList({Key? key}) : super(key: key);
@@ -37,21 +38,37 @@ class _MovieListState extends State<MovieList> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: ListView.builder(
-          itemCount: movies.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                '${movies[index]['title']}',
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-              ),
-            );
-          }),
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'SoongCha',
+          style:
+              TextStyle(color: Color(0xfff82f62), fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(
+          color: Colors.grey[800],
+        ),
+      ),
+      body: Column(
+        children: [
+          Container(
+            height: height / 4,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: movies.length,
+              itemBuilder: (BuildContext context, int index) {
+                return MovieFilter(index: index, movies: movies);
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
