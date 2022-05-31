@@ -39,15 +39,15 @@ class _MovieListState extends State<MovieList> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    // final List filteresMovies =
-    //     movies.where((movie) => movie['id'] == 42414).toList();
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
           'SoongCha',
-          style:
-              TextStyle(color: Color(0xfff82f62), fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Color(0xfff82f62),
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1,
+          ),
         ),
         centerTitle: true,
         elevation: 0,
@@ -56,21 +56,15 @@ class _MovieListState extends State<MovieList> {
           color: Colors.grey[800],
         ),
       ),
-      body: Column(
-        children: [
-          Container(
-            height: height / 4,
-            child: FilteredMovieList(movies: movies, genre: 'total'),
-          ),
-          Container(
-            height: height / 4,
-            child: FilteredMovieList(movies: movies, genre: 'Action'),
-          ),
-          Container(
-            height: height / 4,
-            child: FilteredMovieList(movies: movies, genre: 'Drama'),
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            FilteredMovieList(movies: movies, genre: 'total'),
+            FilteredMovieList(movies: movies, genre: 'Drama'),
+            FilteredMovieList(movies: movies, genre: 'Comedy'),
+            FilteredMovieList(movies: movies, genre: 'Action'),
+          ],
+        ),
       ),
     );
   }

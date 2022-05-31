@@ -41,30 +41,82 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
     String title = widget.title;
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
           'SoongCha',
-          style:
-              TextStyle(color: Color(0xfff82f62), fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Color(0xfff82f62),
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1,
+          ),
         ),
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
-      body: Column(children: [
-        TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/movielist');
-          },
-          child: Center(
-            child: Text(
-              'START',
-            ),
+      body: Container(
+        height: height,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: AssetImage('assets/movie.jpg'), // 배경 이미지
           ),
         ),
-      ]),
+        child: Stack(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Positioned(
+              top: height / 3,
+              right: 100,
+              left: 100,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/movielist');
+                },
+                child: Center(
+                  child: Container(
+                    width: width / 2.8,
+                    height: height / 13,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Color(0xfff82f62),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.2),
+                          spreadRadius: 2,
+                          blurRadius: 10,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      "START",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 2,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
