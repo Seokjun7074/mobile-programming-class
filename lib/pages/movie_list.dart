@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:mobile_final/widget/movie_filter.dart';
+import 'package:lottie/lottie.dart';
 
 class MovieList extends StatefulWidget {
   const MovieList({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class MovieList extends StatefulWidget {
 
 class _MovieListState extends State<MovieList> {
   late List movies = [];
+  bool loading = true;
 
   void fetchData() async {
     Response response =
@@ -22,6 +24,7 @@ class _MovieListState extends State<MovieList> {
       // (parsingData['data']['movies'][0]['title']);
       setState(() {
         movies = parsingData['data']['movies'];
+        loading = false;
       });
     } else {
       throw Exception('API 불러오기 실패');
@@ -40,6 +43,7 @@ class _MovieListState extends State<MovieList> {
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      // backgroundColor: Color(0xff141414),
       appBar: AppBar(
         title: Text(
           'SoongCha',
@@ -56,16 +60,18 @@ class _MovieListState extends State<MovieList> {
           color: Colors.grey[800],
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            FilteredMovieList(movies: movies, genre: 'total'),
-            FilteredMovieList(movies: movies, genre: 'Drama'),
-            FilteredMovieList(movies: movies, genre: 'Comedy'),
-            FilteredMovieList(movies: movies, genre: 'Action'),
-          ],
-        ),
-      ),
+      body: loading
+          ? Center(child: Lottie.asset('assets/movie-loading.json'))
+          : SingleChildScrollView(
+              child: Column(
+                children: [
+                  FilteredMovieList(movies: movies, genre: 'total'),
+                  FilteredMovieList(movies: movies, genre: 'Drama'),
+                  FilteredMovieList(movies: movies, genre: 'Comedy'),
+                  FilteredMovieList(movies: movies, genre: 'Action'),
+                ],
+              ),
+            ),
     );
   }
 }

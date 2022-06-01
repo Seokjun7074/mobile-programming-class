@@ -34,6 +34,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   http: ^0.13.4
+  lottie: ^1.3.0
 
 dev_dependencies:
   flutter_test:
@@ -60,6 +61,8 @@ flutter:
   assets:
     - assets/background.jpg
     - assets/movie.jpg
+    - assets/movie-loading.json
+    - assets/movie-loading2.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
