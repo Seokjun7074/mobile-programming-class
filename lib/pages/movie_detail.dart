@@ -26,8 +26,9 @@ class _MovieDetailState extends State<MovieDetail> {
     List movies = args.movies;
     int index = args.index;
 
-    bool _isTextOverflow = movies[index]['summary'].length > 276 ? true : false;
+    bool _isTextOverflow = movies[index]['summary'].length > 273 ? true : false;
 
+    // print(movies[index]['title'].length);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -61,17 +62,20 @@ class _MovieDetailState extends State<MovieDetail> {
                   ),
                 ),
                 Positioned(
-                  top: 140,
+                  top: movies[index]['title'].length >= 29 ? 120 : 140,
                   left: 120,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        '${movies[index]['title']}',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                      SizedBox(
+                        width: 270,
+                        child: Text(
+                          '${movies[index]['title']}',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       Padding(
@@ -155,14 +159,13 @@ class _MovieDetailState extends State<MovieDetail> {
                   ),
                   Divider(color: Colors.grey[700], thickness: 1.0),
                   Container(
-                    height: 100,
+                    height: null,
                     child: Text(
-                      // '${movies[index]['summary']}',
                       '${movies[index]['summary']}',
                       maxLines: showOverflow ? null : 6,
                       overflow: showOverflow
                           ? TextOverflow.visible
-                          : TextOverflow.fade,
+                          : TextOverflow.ellipsis,
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 15,
@@ -170,10 +173,18 @@ class _MovieDetailState extends State<MovieDetail> {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Container(
+                    width: width,
+                    height: 100,
+                    color: Colors.amber,
+                  ),
                 ],
                 // 276
               ),
-            )
+            ),
           ],
         ),
       ),

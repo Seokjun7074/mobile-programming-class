@@ -25,7 +25,7 @@ class _FilteredMovieListState extends State<FilteredMovieList> {
     List movies = widget.movies;
     String genre = widget.genre;
 
-    final List filteresMovies = genre == 'total'
+    final List filteresMovies = genre == 'Total'
         ? movies
         : movies.where((movie) => movie['genres'].contains(genre)).toList();
     // print(filteresMovies.length);
