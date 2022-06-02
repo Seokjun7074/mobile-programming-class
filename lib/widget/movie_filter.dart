@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../pages/movie_detail.dart';
+
 class FilteredMovieList extends StatefulWidget {
   final List movies;
   final String genre;
@@ -26,7 +28,7 @@ class _FilteredMovieListState extends State<FilteredMovieList> {
     final List filteresMovies = genre == 'total'
         ? movies
         : movies.where((movie) => movie['genres'].contains(genre)).toList();
-    print(filteresMovies.length);
+    // print(filteresMovies.length);
 
     return Column(
       children: [
@@ -69,12 +71,25 @@ class _FilteredMovieListState extends State<FilteredMovieList> {
                   ),
                   child: Column(
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10.0),
-                        child: Image(
-                          // fit: BoxFit.fill,
-                          image: NetworkImage(
-                            '${filteresMovies[index]['medium_cover_image']}',
+                      GestureDetector(
+                        onTap: () {
+                          // print('${filteresMovies[index]['title']}');
+                          Navigator.pushNamed(
+                            context,
+                            '/moviedetail',
+                            arguments: MovieArgument(
+                              movies: filteresMovies,
+                              index: index,
+                            ),
+                          );
+                        },
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child: Image(
+                            // fit: BoxFit.fill,
+                            image: NetworkImage(
+                              '${filteresMovies[index]['medium_cover_image']}',
+                            ),
                           ),
                         ),
                       ),

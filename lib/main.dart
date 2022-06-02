@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_final/pages/movie_detail.dart';
 import 'package:mobile_final/pages/movie_list.dart';
 
 void main() {
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
               title: 'Soongflix',
             ),
         '/movielist': (context) => MovieList(),
+        '/moviedetail': (context) => MovieDetail()
       },
     );
   }
@@ -101,12 +103,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                     child: Text(
-                      "START",
+                      "시작하기",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.grey[200],
                         fontSize: 28,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w600,
                         letterSpacing: 2,
                       ),
                     ),

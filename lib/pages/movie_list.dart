@@ -45,23 +45,29 @@ class _MovieListState extends State<MovieList> {
     return Scaffold(
       // backgroundColor: Color(0xff141414),
       appBar: AppBar(
-        title: Text(
-          'SoongCha',
-          style: TextStyle(
-            color: Color(0xfff82f62),
-            fontWeight: FontWeight.bold,
-            letterSpacing: 1,
+          title: Text(
+            'SoongCha',
+            style: TextStyle(
+              color: Color(0xfff82f62),
+              fontWeight: FontWeight.bold,
+              letterSpacing: 1,
+            ),
           ),
-        ),
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        iconTheme: IconThemeData(
-          color: Colors.grey[800],
-        ),
-      ),
+          centerTitle: true,
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          automaticallyImplyLeading: false
+          // iconTheme: IconThemeData(
+          //   color: Colors.grey[800],
+          // ),
+          ),
       body: loading
-          ? Center(child: Lottie.asset('assets/movie-loading.json'))
+          ? Center(
+              child: SizedBox(
+                width: width / 5,
+                child: Lottie.asset('assets/movie-loading.json'),
+              ),
+            )
           : SingleChildScrollView(
               child: Column(
                 children: [
