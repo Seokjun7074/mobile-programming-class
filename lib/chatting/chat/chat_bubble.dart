@@ -18,13 +18,13 @@ class ChatBubble extends StatelessWidget {
             SizedBox(
               width: 145,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
                 child: Text(
                   isME ? 'Me' : userName,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                   ),
-                  textAlign: TextAlign.start,
+                  textAlign: isME ? TextAlign.end : TextAlign.start,
                 ),
               ),
             ),

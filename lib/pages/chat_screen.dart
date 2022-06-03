@@ -5,6 +5,12 @@ import 'package:lottie/lottie.dart';
 import 'package:mobile_final/chatting/chat/message.dart';
 import 'package:mobile_final/chatting/chat/new_message.dart';
 
+class ChattingArgument {
+  final String title;
+
+  ChattingArgument({required this.title});
+}
+
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
 
@@ -36,6 +42,9 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as ChattingArgument;
+    String title = args.title;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -51,39 +60,34 @@ class _ChatScreenState extends State<ChatScreen> {
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
       ),
-      // body: StreamBuilder(
-      //   stream: FirebaseFirestore.instance
-      //       .collection('chats/Vhcdxm09nkZibW2T9GqX/message')
-      //       .snapshots(),
-      //   builder: (BuildContext context,
-      //       AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
-      //     if (snapshot.connectionState == ConnectionState.waiting) {
-      //       return Center(
-      //         child: Lottie.asset('assets/movie-loading.json'),
-      //         // child: CircularProgressIndicator(),
-      //       );
-      //     }
-      //     final docs = snapshot.data!.docs;
-      //     print(docs);
-      //     return ListView.builder(
-      //       itemCount: docs.length,
-      //       itemBuilder: (BuildContext context, int index) {
-      //         return Container(
-      //           child: Text(
-      //             docs[index]['text'],
-      //           ),
-      //         );
-      //       },
-      //     );
-      //   },
-      // ),
       body: Container(
         child: Column(
           children: [
-            Expanded(
-              child: Messages(),
+            Container(
+              decoration: BoxDecoration(
+                color: Color(0xfff82f62),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  '${title} 채팅방 입니다.',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
             ),
-            NewMessage(),
+            Expanded(
+              child: Messages(
+                title,
+              ),
+            ),
+            NewMessage(
+              title,
+            ),
           ],
         ),
       ),

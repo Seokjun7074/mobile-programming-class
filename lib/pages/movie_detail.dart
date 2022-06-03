@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_final/pages/chat_screen.dart';
 
 class MovieArgument {
   final List movies;
@@ -170,7 +171,13 @@ class _MovieDetailState extends State<MovieDetail> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/chatscreen');
+                      Navigator.pushNamed(
+                        context,
+                        '/chatscreen',
+                        arguments: ChattingArgument(
+                          title: movies[index]['title'],
+                        ),
+                      );
                     },
                     child: Container(
                       decoration: BoxDecoration(

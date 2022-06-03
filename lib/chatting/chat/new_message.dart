@@ -3,7 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class NewMessage extends StatefulWidget {
-  const NewMessage({Key? key}) : super(key: key);
+  const NewMessage(this.title, {Key? key}) : super(key: key);
+  final String title;
 
   @override
   State<NewMessage> createState() => _NewMessageState();
@@ -14,22 +15,30 @@ class _NewMessageState extends State<NewMessage> {
   void sendMessage() async {
     FocusScope.of(context).unfocus();
     final user = FirebaseAuth.instance.currentUser;
+    // FirebaseFirestore.instance.collection('${widget.title}');
     final userData = await FirebaseFirestore.instance
         .collection('user')
         .doc(user!.uid)
         .get();
-    FirebaseFirestore.instance.collection('chat').add({
+    FirebaseFirestore.instance.collection('chat').doc('${widget.title}').set({
       'text': _userEnterMessage,
       'time': Timestamp.now(),
       'userId': user.uid,
       'userName': userData.data()!['userName'],
     });
+    // FirebaseFirestore.instance.collection('chat').add({
+    //   'text': _userEnterMessage,
+    //   'time': Timestamp.now(),
+    //   'userId': user.uid,
+    //   'userName': userData.data()!['userName'],
+    // });
     _controller.clear();
   }
 
   var _userEnterMessage = '';
   @override
   Widget build(BuildContext context) {
+    String title = widget.title;
     return Container(
       margin: EdgeInsets.only(top: 8),
       padding: EdgeInsets.all(8),
