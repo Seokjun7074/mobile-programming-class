@@ -118,7 +118,7 @@ class _MovieDetailState extends State<MovieDetail> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Summary',
+                            '줄거리',
                             // '${movies[index]['summary'].length}',
                             style: TextStyle(
                               color: Colors.black,
@@ -142,14 +142,6 @@ class _MovieDetailState extends State<MovieDetail> {
                                       : Icons.arrow_drop_down_rounded,
                                   size: 28,
                                 ),
-                                // child: Text(
-                                //   showOverflow ? '-' : '+',
-                                //   style: TextStyle(
-                                //     fontSize: 22,
-                                //     fontWeight: FontWeight.w600,
-                                //     color: Colors.grey[600],
-                                //   ),
-                                // ),
                               ),
                             ),
                           )
@@ -176,10 +168,19 @@ class _MovieDetailState extends State<MovieDetail> {
                   SizedBox(
                     height: 50,
                   ),
-                  Container(
-                    width: width,
-                    height: 100,
-                    color: Colors.amber,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/chatscreen');
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey[500],
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      width: width / 2,
+                      height: 80,
+                      child: Text('토론방 가기'),
+                    ),
                   ),
                 ],
                 // 276

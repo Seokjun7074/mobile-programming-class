@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_final/widget/palette.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -397,6 +398,14 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             email: userEmail,
                             password: userPassword,
                           );
+                          // 유저 아이디 저장 파트
+                          await FirebaseFirestore.instance
+                              .collection('user')
+                              .doc(newUser.user!.uid)
+                              .set({
+                            'userName': userName,
+                            'email': userEmail,
+                          });
                           if (newUser.user != null) {
                             Navigator.pushNamed(context, '/movielist');
                           }

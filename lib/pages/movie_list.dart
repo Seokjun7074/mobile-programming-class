@@ -76,9 +76,18 @@ class _MovieListState extends State<MovieList> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
-        // iconTheme: IconThemeData(
-        //   color: Colors.grey[800],
-        // ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              _authentication.signOut();
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.logout_outlined,
+              color: Color(0xfff82f62),
+            ),
+          ),
+        ],
       ),
       body: loading
           ? Center(

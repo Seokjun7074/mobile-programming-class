@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_final/pages/chat_screen.dart';
 import 'package:mobile_final/pages/login.dart';
 import 'package:mobile_final/pages/movie_detail.dart';
 import 'package:mobile_final/pages/movie_list.dart';
 import "package:firebase_core/firebase_core.dart";
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/movielist': (context) => MovieList(),
         '/moviedetail': (context) => MovieDetail(),
         '/login': (context) => LoginSignupScreen(),
+        '/chatscreen': (context) => ChatScreen(),
       },
     );
   }
