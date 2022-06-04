@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_final/pages/chat_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MovieArgument {
   final List movies;
@@ -28,8 +29,8 @@ class _MovieDetailState extends State<MovieDetail> {
     int index = args.index;
 
     bool _isTextOverflow = movies[index]['summary'].length > 273 ? true : false;
+    int genre_num = movies[index]['genres'].length;
 
-    // print(movies[index]['title'].length);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -111,6 +112,40 @@ class _MovieDetailState extends State<MovieDetail> {
               padding: const EdgeInsets.all(10.0),
               child: Column(
                 children: [
+                  Container(
+                    width: width,
+                    child: Text(
+                      '장르',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Divider(color: Colors.grey[700], thickness: 1.0),
+                  Container(
+                    child: Row(
+                      children: [
+                        for (int i = 0; i < genre_num; i++)
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                            child: Text(
+                              movies[index]['genres'][i].toString(),
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                     child: Container(
@@ -170,7 +205,7 @@ class _MovieDetailState extends State<MovieDetail> {
                     height: 50,
                   ),
                   GestureDetector(
-                    onTap: () {
+                    onTap: () async {
                       Navigator.pushNamed(
                         context,
                         '/chatscreen',
@@ -181,12 +216,20 @@ class _MovieDetailState extends State<MovieDetail> {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[500],
-                        borderRadius: BorderRadius.circular(12),
+                        color: Color(0xfff82f62),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      width: width / 2,
-                      height: 80,
-                      child: Text('토론방 가기'),
+                      width: width / 3,
+                      height: 50,
+                      child: Center(
+                          child: Text(
+                        '토론방 가기',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      )),
                     ),
                   ),
                 ],

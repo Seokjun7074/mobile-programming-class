@@ -99,7 +99,7 @@ class _MovieListState extends State<MovieList> {
           : SingleChildScrollView(
               child: Column(
                 children: [
-                  FilteredMovieList(movies: movies, genre: 'Total'),
+                  FilteredMovieList(movies: movies, genre: 'Today`s Movie'),
                   FilteredMovieList(movies: movies, genre: 'Drama'),
                   FilteredMovieList(movies: movies, genre: 'Comedy'),
                   FilteredMovieList(movies: movies, genre: 'Action'),

@@ -66,6 +66,18 @@ flutter:
     - assets/movie.jpg
     - assets/movie-loading.json
     - assets/movie-loading2.json
+  fonts:
+    - family: yanolja
+      fonts:
+        - asset: assets/font/yanoljaRegular.ttf
+
+    - family: Dongle
+      fonts:
+        - asset: assets/font/Dongle-Regular.ttf
+
+    - family: Jalnan
+      fonts:
+        - asset: assets/font/Jalnan.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -1,3 +1,6 @@
+import 'dart:ffi';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import '../pages/movie_detail.dart';
@@ -25,10 +28,18 @@ class _FilteredMovieListState extends State<FilteredMovieList> {
     List movies = widget.movies;
     String genre = widget.genre;
 
-    final List filteresMovies = genre == 'Total'
+    List filteresMovies = [];
+    // movies.forEach((element) {
+    //   print(element['genres']);
+    // });
+    movies = movies.where((movie) => movie['genres'] != null).toList();
+    // movies.forEach((element) {
+    //   print(element['genres']);
+    // });
+
+    filteresMovies = genre == 'Today`s Movie'
         ? movies
         : movies.where((movie) => movie['genres'].contains(genre)).toList();
-    // print(filteresMovies.length);
 
     return Column(
       children: [
