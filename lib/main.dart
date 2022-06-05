@@ -123,49 +123,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            // Positioned(
-            //   top: height / 3,
-            //   right: 100,
-            //   left: 100,
-            //   child: GestureDetector(
-            //     onTap: () {
-            //       Navigator.pushNamed(context, '/movielist');
-            //     },
-            //     child: Center(
-            //       child: Container(
-            //         width: width / 2.8,
-            //         height: height / 13,
-            //         alignment: Alignment.center,
-            //         decoration: BoxDecoration(
-            //           color: Color(0xfff82f62),
-            //           borderRadius: BorderRadius.only(
-            //               topLeft: Radius.circular(20),
-            //               topRight: Radius.circular(20),
-            //               bottomLeft: Radius.circular(20),
-            //               bottomRight: Radius.circular(20)),
-            //           boxShadow: [
-            //             BoxShadow(
-            //               color: Colors.grey.withOpacity(0.2),
-            //               spreadRadius: 2,
-            //               blurRadius: 10,
-            //               offset: Offset(0, 3), // changes position of shadow
-            //             ),
-            //           ],
-            //         ),
-            //         child: Text(
-            //           "시작하기",
-            //           textAlign: TextAlign.center,
-            //           style: TextStyle(
-            //             color: Colors.grey[200],
-            //             fontSize: 28,
-            //             fontWeight: FontWeight.w600,
-            //             letterSpacing: 2,
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),

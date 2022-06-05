@@ -155,7 +155,6 @@ class _MovieDetailState extends State<MovieDetail> {
                         children: [
                           Text(
                             '줄거리',
-                            // '${movies[index]['summary'].length}',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 20,

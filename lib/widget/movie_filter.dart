@@ -107,7 +107,6 @@ class _FilteredMovieListState extends State<FilteredMovieList> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                         child: Container(
-                          // color: Colors.blueAccent,
                           child: Text(
                             '${filteresMovies[index]['title']}',
                             textAlign: TextAlign.center,

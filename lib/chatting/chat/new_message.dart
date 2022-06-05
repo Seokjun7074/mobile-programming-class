@@ -20,10 +20,7 @@ class _NewMessageState extends State<NewMessage> {
         .collection('user')
         .doc(user!.uid)
         .get();
-    FirebaseFirestore.instance
-        .collection('${widget.title}')
-        .doc('${widget.title}')
-        .set({
+    FirebaseFirestore.instance.collection('${widget.title}').add({
       'text': _userEnterMessage,
       'time': Timestamp.now(),
       'userId': user.uid,

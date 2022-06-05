@@ -12,7 +12,7 @@ class Messages extends StatelessWidget {
     final user = FirebaseAuth.instance.currentUser;
     return StreamBuilder(
       stream: FirebaseFirestore.instance
-          .collection('chat')
+          .collection(title)
           .orderBy(
             'time',
             descending: true,

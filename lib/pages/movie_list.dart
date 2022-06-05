@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -26,12 +27,22 @@ class _MovieListState extends State<MovieList> {
     fetchData();
   }
 
+  void getUserData() async {
+    final user = FirebaseAuth.instance.currentUser;
+    // FirebaseFirestore.instance.collection('${widget.title}');
+    final userData = await FirebaseFirestore.instance
+        .collection('user')
+        .doc(user!.uid)
+        .get();
+  }
+
   void getCurrentUser() {
     try {
       final user = _authentication.currentUser;
       if (user != null) {
         loggedUser = user;
         print(loggedUser!.email);
+        print(_authentication.currentUser);
       }
     } catch (e) {
       print(e);
@@ -91,9 +102,25 @@ class _MovieListState extends State<MovieList> {
       ),
       body: loading
           ? Center(
-              child: SizedBox(
-                width: width / 5,
-                child: Lottie.asset('assets/movie-loading.json'),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Text(
+                  //   'Hi',
+                  //   style: TextStyle(
+                  //     fontSize: 25,
+                  //     fontWeight: FontWeight.w700,
+                  //     color: Color(0xfff82f62),
+                  //   ),
+                  // ),
+                  // SizedBox(
+                  //   height: 30,
+                  // ),
+                  SizedBox(
+                    width: width / 5,
+                    child: Lottie.asset('assets/movie-loading.json'),
+                  ),
+                ],
               ),
             )
           : SingleChildScrollView(
