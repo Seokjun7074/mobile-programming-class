@@ -48,7 +48,18 @@ class _NewMessageState extends State<NewMessage> {
           Expanded(
             child: TextField(
               controller: _controller,
-              decoration: InputDecoration(labelText: 'Talk about movie'),
+              decoration: InputDecoration(
+                labelText: 'Talk about movie',
+                labelStyle: TextStyle(
+                    color: Color(0xfff82f62),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color(0xfff82f62),
+                  ),
+                ),
+              ),
               onChanged: (value) {
                 setState(() {
                   _userEnterMessage = value;

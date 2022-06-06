@@ -111,7 +111,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                       margin: EdgeInsets.only(top: 3),
                                       height: 2,
                                       width: 55,
-                                      color: Colors.orange,
+                                      color: Color(0xfff82f62),
                                     )
                                 ],
                               ),
@@ -138,7 +138,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                       margin: EdgeInsets.only(top: 3),
                                       height: 2,
                                       width: 55,
-                                      color: Colors.orange,
+                                      color: Color(0xfff82f62),
                                     )
                                 ],
                               ),

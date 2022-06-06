@@ -65,13 +65,13 @@ class _ChatScreenState extends State<ChatScreen> {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: Color(0xfff82f62),
+                color: Color.fromARGB(255, 247, 62, 108),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  '${title} 채팅방 입니다.',
+                  ' ${title} 채팅방 ',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
