@@ -238,6 +238,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     height: 8,
                                   ),
                                   TextFormField(
+                                    obscureText: true,
                                     key: ValueKey(3),
                                     validator: (value) {
                                       if (value!.isEmpty || value.length < 6) {
@@ -331,6 +332,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     height: 8.0,
                                   ),
                                   TextFormField(
+                                    obscureText: true,
                                     key: ValueKey(5),
                                     validator: (value) {
                                       if (value!.isEmpty || value.length < 6) {

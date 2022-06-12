@@ -63,6 +63,9 @@ class _ChatScreenState extends State<ChatScreen> {
       body: Container(
         child: Column(
           children: [
+            SizedBox(
+              height: 10,
+            ),
             Container(
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 247, 62, 108),
@@ -71,7 +74,7 @@ class _ChatScreenState extends State<ChatScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  ' ${title} 채팅방 ',
+                  ' ${title} 토론방 ',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
